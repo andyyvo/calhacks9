@@ -39,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "author": "andyyvo <andyvo@bu.edu>",
+  "license": "MIT"
 }
