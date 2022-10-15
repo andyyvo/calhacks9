@@ -1,0 +1,19 @@
+// sass --watch ./src/styles/index.scss ./src/App.css
+
+// imports
+@use "./variables" as v;
+@import "./variables";
+@import "./components/Screen";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+body {
+  color: v.$black;
+}

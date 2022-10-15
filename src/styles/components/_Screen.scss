@@ -1,0 +1,26 @@
+@use '../variables' as v;
+
+.screenframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.screen {
+  display: block;
+  width: 100%;
+
+  // types of screens
+  &.auto {
+    height: auto;
+  }
+
+  &.full {
+    height: 100vh;
+  }
+
+  // color of screens
+  &.backgroundcolor-cream {
+    background-color: v.$cream;
+  }
+}
