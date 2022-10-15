@@ -1,3 +1,7 @@
+# CalHacks 9.0
+
+Team: Andy Vo, Natalie Chan, Tyler Wu, Ning Zhang
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
