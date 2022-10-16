@@ -36,6 +36,8 @@ export const MoodPage: React.FunctionComponent = () => {
   // did a dept get selected
   const [isDept, setIsDept] = React.useState(false);
 
+  const [data, setData] = React.useState({});
+
   /** get session cookie uuid */
   const cookie = generateUUID();
 
@@ -110,6 +112,7 @@ export const MoodPage: React.FunctionComponent = () => {
     setIsDept(true);
   }
 
+  /** write to db */
   const handleOnSubmit = () => {
     if (mood1) {
       writeMoodData(cookie, dept, moods.m1);

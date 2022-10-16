@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import * as d3 from 'd3';
+import { Button } from '../Button/Button';
 // d3 and react both modify dom, need to tell react to let d3 handle using useRef
 
 const config = {
@@ -185,8 +186,10 @@ export const MoodRatios = () => {
         },[data,svgRef.current])
 
         return (
-            <div className='mood-ratio-div' style={{"backgroundColor":"white"}}>
+            <div className='mood-ratio-div' >
+                <SortButton data={data} setData={setData} desc={true} btnTxt = {"descending"} />
                 <svg ref={svgRef}></svg>
+                <SortButton data={data} setData={setData} desc={false} btnTxt = {"ascending"} />
             </div>
         );
     };
@@ -195,16 +198,16 @@ export const MoodRatios = () => {
     // sort_data(data,true);
     
     const SortButton = ({data, setData, desc, btnTxt}) => {
-        return <button onClick={() => setData(sort_data(data,desc))}>{btnTxt}</button>
+        return <span onClick={() => setData(sort_data(data,desc))}><Button variant='primary' padding='small'><p className='bold'>{btnTxt}</p></Button></span>
 
     }
 
     return ( 
         <>
             {/* <BarChartVis data={data} setData={setData}/> */}
-            <SortButton data={data} setData={setData} desc={true} btnTxt = {"descending"}/>
-            <SortButton data={data} setData={setData} desc={false} btnTxt = {"ascending"}/>
+            
             <LeaderBoardVis data={data}/>
+            
         </>
     )
 };

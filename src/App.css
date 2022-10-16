@@ -471,6 +471,10 @@ img.mood-image {
   margin-top: 1rem;
 }
 
+.mood-ratio-div {
+  padding-left: 5rem;
+}
+
 h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 2.625rem;
