@@ -10,6 +10,17 @@ import { moodGenerator } from "../config/generateMoods";
 
 /** get user berkeley dept/school and their mood */
 
+/** get 6 random moods: fear, anger, anticipation, surprise, joy, sad */
+const moodsList: string[] = moodGenerator();
+const moods = {
+  m1: moodsList[2],
+  m2: moodsList[0],
+  m3: moodsList[1],
+  m4: moodsList[5],
+  m5: moodsList[3],
+  m6: moodsList[4]
+}
+
 export const MoodPage: React.FunctionComponent = () => {
   // mood state hooks
   const [mood1, setMood1] = React.useState(false);
@@ -27,17 +38,6 @@ export const MoodPage: React.FunctionComponent = () => {
 
   /** get session cookie uuid */
   const cookie = generateUUID();
-
-  /** get 6 random moods: fear, anger, anticipation, surprise, joy, sad */
-  const moodsList: string[] = moodGenerator();
-  const moods = {
-    m1: moodsList[0],
-    m2: moodsList[1],
-    m3: moodsList[2],
-    m4: moodsList[3],
-    m5: moodsList[4],
-    m6: moodsList[5]
-  }
 
   const handleOnClick1 = () => {
     setMood1(true);

@@ -26,7 +26,7 @@ export const OnboardPage: React.FunctionComponent = () => {
             <img src="/img/gray_sad.svg" alt="sad" className="moods sad" />
           </div>
           <div className="moods-container hopeful">
-            <img src="/img/green_anticipation.svg" alt="hopeful" className="moods hopeful" />
+            <img src="/img/green_hopeful.svg" alt="hopeful" className="moods hopeful" />
           </div>
           <div className="moods-container happy">
             <img src="/img/yellow_happy.svg" alt="happy" className="moods happy" />
