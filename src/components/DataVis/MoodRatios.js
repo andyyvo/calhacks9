@@ -25,10 +25,10 @@ function getTransitionElastic(amp = 0.5, period = 0.4) {
 const sort_data = (data,desc=true) => {
     let newData = data; // make a copy?
     if (desc){
-        newData.sort((a, b) => b.score - a.score);
+        newData.sort((a, b) => a.score - b.score);
     }
     else{
-        newData.sort((a, b) => a.score - b.score);
+        newData.sort((a, b) => b.score - a.score);
     }
     newData = [...newData]
     return newData
@@ -122,11 +122,15 @@ export const MoodRatios = () => {
                     .range([config.h * 0.95, config.h * 0.05])
                     .paddingInner(20)
                     .paddingOuter(1);
-                
+
                 let rScale = d3.scaleLinear()
-                    .domain(data.map(d => d.score))
+                    .domain([0,Math.max(...data.map(d=>d.score))])
                     .range([40,70]);
                     // .range([10,config.h/12]);
+
+                // let move_to_front = () => {
+                //     this.raise();
+                // }
 
                 // console.log('yscal',yScale.range());
                 // plot data
@@ -149,6 +153,18 @@ export const MoodRatios = () => {
                                 .call(enter => enter.transition(getTransitionElastic())
                                     .attr("y", d => yScale(d.emotion))
                                 )
+                            bubbleGroups 
+                                .append("text")
+                                .text(d => (d.score * 100) + "%")
+                                .attr("x", (d,i) => {
+                                    xScale(0.6)
+                                })
+                                .attr("y", config.h + config.h * 0.05)
+                                .call(enter => enter.transition(getTransitionElastic())
+                                    .attr("y", d => yScale(d.emotion) + config.h * 0.05)
+                                )
+                            // bubble_texts
+                            //     .call(move_to_front())
 
                             bubbleGroups 
                                 .append("image")
@@ -156,16 +172,9 @@ export const MoodRatios = () => {
                                     .attr('percent', d => d.score)
                                     .attr("xlink:href", d => "img/face_" + d.emotion+ ".svg")
                                     // .attr("x", d => xScale(0.5))
-                                    .attr("x", (d,i) => {return xScale(0.3)
-                                        // if (i%2==0){
-                                        //     return xScale(0.4 + Math.random() * 0.1)
-                                        // }
-                                        // else{
-                                        //     return xScale(0.2 + Math.random() * -0.1)
-                                        // }
-                                    })
+                                    .attr("x", (d,i) => xScale(0.3))
                                     .attr("y", config.h)
-                                    .attr("width", d => rScale(d.score))
+                                    .attr("width", d => {return rScale(d.score)})
                                     .attr("height", d => rScale(d.score))
                                     .call(enter => enter.transition(getTransitionElastic())
                                         .attr("y", d => yScale(d.emotion))
@@ -209,16 +218,16 @@ export const MoodRatios = () => {
     // sort data after to update state
     // sort_data(data,true);
     
-    const SortButton = ({data, setData, desc}) => {
-        return <button onClick={() => setData(sort_data(data,desc))}>sort desc?{desc}</button>
+    const SortButton = ({data, setData, desc, btnTxt}) => {
+        return <button onClick={() => setData(sort_data(data,desc))}>{btnTxt}</button>
 
     }
 
     return ( 
         <>
             {/* <BarChartVis data={data} setData={setData}/> */}
-            <SortButton data={data} setData={setData} desc={true}/>
-            <SortButton data={data} setData={setData} desc={false}/>
+            <SortButton data={data} setData={setData} desc={true} btnTxt = {"descending"}/>
+            <SortButton data={data} setData={setData} desc={false} btnTxt = {"ascending"}/>
             <LeaderBoardVis data={data}/>
         </>
     )
