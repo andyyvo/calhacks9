@@ -1,0 +1,32 @@
+#grid-container {
+    background-color: #F5EDE2;
+    font-family: Montserrat;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 20px auto;
+    grid-template-areas:"header header"
+                        "bottom-left bottom-right"
+}
+
+#grid-item-top {
+    grid-area: header;
+    padding: 20px 0px 0px 0px;
+    text-align: center;
+}
+
+#grid-item-left {
+    grid-area: bottom-left;
+    height: 100vh;
+    padding: 20px;
+}
+
+#grid-item-right {
+    grid-area: bottom-right;
+    height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.date {
+    margin-top: 20px;
+}
