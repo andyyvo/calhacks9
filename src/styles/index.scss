@@ -7,6 +7,9 @@
 @import "./components/NavBar";
 @import "./components/Screen";
 
+// imports pages
+@import "./pages/OnboardPage";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,5 +20,6 @@
 }
 
 body {
+  font-family: v.$mont;
   color: v.$black;
 }

@@ -10,7 +10,7 @@ export interface ButtonProps {
   /** accessible name for button */
   'aria-label'?: string;
   /** color of button background */
-  backgroundColor?: 'blue' | 'green' | 'yellow' | 'red' | 'purple' | 'gray' | 'black' | 'cream';
+  backgroundColor?: 'blue' | 'green' | 'yellow' | 'red' | 'purple' | 'gray' | 'black' | 'cream' | 'white';
   /** renders content inside button */
   children: React.ReactNode;
   /** class name of button */
@@ -24,7 +24,7 @@ export interface ButtonProps {
   /** onClick event */
   onClick: () => void;
   /** padding size of button */
-  padding: 'large' | 'small' | 'none';
+  padding: 'large' | 'small' | 'even' | 'none';
   /** toggle state */
   toggle?: boolean;
   /** button variant */

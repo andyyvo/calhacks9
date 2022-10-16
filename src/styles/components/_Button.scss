@@ -4,10 +4,50 @@
   cursor: pointer;
   width: auto;
   height: auto;
+  border: 2px solid v.$black;
+  border-radius: 1rem;
 
   // button types
   &.primary {
-    
+    box-shadow: 0 0.25rem v.$black;
+
+    &.background-blue {
+      background-color: v.$blue;
+    }
+
+    &.background-green {
+      background-color: v.$green;
+    }
+
+    &.background-yellow {
+      background-color: v.$yellow;
+    }
+
+    &.background-red {
+      background-color: v.$red;
+    }
+
+    &.background-purple {
+      background-color: v.$purple;
+    }
+
+    &.background-gray {
+      background-color: v.$gray;
+    }
+
+    &.background-black {
+      background-color: v.$black;
+      border: 2px v.$white;
+      box-shadow: 0.25rem v.$white;
+    }
+
+    &.background-cream {
+      background-color: v.$cream;
+    }
+
+    &.background-white {
+      background-color: v.$white;
+    }
   }
 
   &.secondary {
@@ -25,6 +65,10 @@
 
   &.padding-small {
     padding: 0.5rem 1rem;
+  }
+
+  &.padding-even {
+    padding: 1rem;
   }
 
   &.padding-none {

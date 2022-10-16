@@ -1,3 +1,59 @@
+// imports
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+// text
+$mont: 'Montserrat', sans-serif;
+
+h1 {
+  font-family: $mont;
+  font-size: 2.625rem;
+  font-weight: 400;
+}
+
+h1.bold {
+  font-weight: 700;
+}
+
+h2 {
+  font-family: $mont;
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+h2.bold {
+  font-weight: 700;
+}
+
+h3 {
+  font-family: $mont;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+h3.bold {
+  font-weight: 700;
+}
+
+h4 {
+  font-family: $mont;
+  font-size: 1.375rem;
+  font-weight: 400;
+}
+
+h4.bold {
+  font-weight: 700;
+}
+
+p {
+  font-family: $mont;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+p.bold {
+  font-weight: 700;
+}
+
 // colors
 $blue: #95B0E5;
 $green: #8DC99C;
@@ -7,3 +63,4 @@ $purple: #C5A6C6;
 $gray: #D9D9D9;
 $black: #393A40;
 $cream: #F5EDE2;
+$white: #FFF;
