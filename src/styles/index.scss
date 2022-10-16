@@ -8,12 +8,12 @@
 @import "./components/Screen";
 @import "./components/Map";
 @import "./components/MoodRatio";
-@import "./pages/GraphPage";
 @import "./components/Logo";
 @import "./pages/MoodPage";
 
 // imports pages
 @import "./pages/OnboardPage";
+@import "./pages/GraphPage";
 
 * {
   box-sizing: border-box;
