@@ -40,7 +40,7 @@ export const MoodRatios = () => {
     const [data,setData] = useState([
         {emotion: 'fear', score: 0.2},
         {emotion: 'anger', score: 0.1},
-        {emotion: 'anticipation', score: 0.1},
+        {emotion: 'hopeful', score: 0.1},
         {emotion: 'surprise', score: 0.13},
         {emotion: 'happy', score: 0.17},
         {emotion: 'sad', score: 0.3}
