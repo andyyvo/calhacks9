@@ -9,6 +9,7 @@
 .screen {
   display: block;
   width: 100%;
+  overflow: hidden;
 
   // types of screens
   &.auto {

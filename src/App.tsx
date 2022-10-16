@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import { OnboardPage } from './pages/OnboardPage';
-// import { MoodPage } from './pages/MoodPage';
+import { RouterProvider } from "react-router-dom";
+import { router } from './config/AllRoutes';
 
 function App() {
   return (
     <div className="App">
-      {/* <MoodPage /> */}
-      <OnboardPage />
+      <RouterProvider router={router} />
     </div>
   );
 }

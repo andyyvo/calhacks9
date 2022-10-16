@@ -5,14 +5,12 @@ import { getDatabase } from 'firebase/database';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDODAwUefYQQ2_TwWxBq1lsYA_bFuHk2V4",
-  authDomain: "calhacks9.firebaseapp.com",
-  databaseURL: "https://calhacks9-default-rtdb.firebaseio.com",
-  projectId: "calhacks9",
-  storageBucket: "calhacks9.appspot.com",
-  messagingSenderId: "115068392508",
-  appId: "1:115068392508:web:cbe46ed14430e463235f39",
-  measurementId: "G-822LECKTSP"
+  apiKey: "AIzaSyBuhARGgjKilZbXt6p1Foykpo2_s-N3w6s",
+  authDomain: "moodz-3f930.firebaseapp.com",
+  projectId: "moodz-3f930",
+  storageBucket: "moodz-3f930.appspot.com",
+  messagingSenderId: "950962178471",
+  appId: "1:950962178471:web:0a6020dc29ac5d6acc0e82"
 };
 
 // Initialize Firebase

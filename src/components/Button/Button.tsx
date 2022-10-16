@@ -22,7 +22,7 @@ export interface ButtonProps {
   /** icon position */
   iconPosition?: 'left' | 'right';
   /** onClick event */
-  onClick: () => void;
+  onClick?: () => void;
   /** padding size of button */
   padding: 'large' | 'small' | 'even' | 'none';
   /** toggle state */

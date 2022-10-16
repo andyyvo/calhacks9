@@ -3,11 +3,10 @@ import { Button } from "../components/Button/Button";
 import { Logo } from "../components/Logo/Logo";
 import { Screen } from "../components/Screen/Screen";
 import { ScreenFrame } from "../components/Screen/ScreenFrame";
-import { Link } from "react-router-dom";
 
-/** get started page */
+/** error page */
 
-export const OnboardPage: React.FunctionComponent = () => {
+export const ErrorPage: React.FunctionComponent = () => {
 
   return (
     <ScreenFrame>
@@ -33,31 +32,23 @@ export const OnboardPage: React.FunctionComponent = () => {
           </div>
         </div>
         <div className="data-button">
-          <Link to="/home">
-            <Button
-              classname="button data-icon"
-              backgroundColor="white"
-              padding="even"
-              variant="primary"
-            >
-              <img className="data-button-icon" src="/icons/column-chart.svg" alt="bar-chart button" />
-            </Button>
-          </Link>
+          <Button
+            classname="button data-icon"
+            backgroundColor="white"
+            onClick={() => {}}
+            padding="even"
+            variant="primary"
+          >
+            <img className="data-button-icon" src="/icons/column-chart.svg" alt="bar-chart button" />
+          </Button>
         </div>
         <div className="get-started-content">
           <div className="logo-container">
             <Logo />
           </div>
-          <h1 className="bold">Hey Cal student! How are you doing today?</h1>
-          <Link to="/mood">
-            <Button
-              backgroundColor="yellow"
-              padding="large"
-              variant="primary"
-            >
-              <h3 className="bold">Let us know!</h3>
-            </Button>
-          </Link>
+          <h1 className="bold">Uh-oh!</h1>
+          <h3>You're vibin' a little too hard!</h3>
+          <p><i>Click the logo to get you back home!</i></p>
         </div>
       </Screen>
     </ScreenFrame>

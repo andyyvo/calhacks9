@@ -1,0 +1,8 @@
+<svg width="521" height="520" viewBox="0 0 521 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="260" cy="260" r="260" fill="#8DC99C"/>
+<path d="M174 294C174 322.719 151.614 346 124 346C96.3858 346 74 322.719 74 294" stroke="#393A40" stroke-width="10" stroke-linecap="round"/>
+<path d="M192 249C192 258.941 182.598 267 171 267C159.402 267 150 258.941 150 249" stroke="#393A40" stroke-width="8" stroke-linecap="round"/>
+<circle r="24.2721" transform="matrix(-1 0 0 1 74.2719 252.272)" fill="white"/>
+<circle r="10.2198" transform="matrix(-1 0 0 1 62.7753 248.44)" fill="#393A40"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M340.075 506.83C444.639 473.304 520.328 375.285 520.328 259.588C520.328 116.222 404.107 0 260.74 0C202.801 0 149.295 18.9819 106.102 51.0661C131.109 43.0483 157.767 38.7192 185.437 38.7192C328.803 38.7192 445.025 154.941 445.025 298.308C445.025 383.735 403.76 459.524 340.075 506.83Z" fill="#010201" fill-opacity="0.05"/>
+</svg>

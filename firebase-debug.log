@@ -1,0 +1,25 @@
+[debug] [2022-10-16T09:14:15.214Z] ----------------------------------------------------------------------
+[debug] [2022-10-16T09:14:15.215Z] Command:       /Users/andyvo/.nvm/versions/node/v16.14.0/bin/node /Users/andyvo/.nvm/versions/node/v16.14.0/bin/firebase hosting:disable
+[debug] [2022-10-16T09:14:15.215Z] CLI Version:   10.4.2
+[debug] [2022-10-16T09:14:15.215Z] Platform:      darwin
+[debug] [2022-10-16T09:14:15.215Z] Node Version:  v16.14.0
+[debug] [2022-10-16T09:14:15.217Z] Time:          Sun Oct 16 2022 02:14:15 GMT-0700 (Pacific Daylight Time)
+[debug] [2022-10-16T09:14:15.217Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-16T09:14:15.218Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-10-16T09:14:15.230Z] > refreshing access token with scopes: []
+[debug] [2022-10-16T09:14:15.230Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-10-16T09:14:15.789Z] <<< HTTP RESPONSE 400 {"date":"Sun, 16 Oct 2022 09:14:15 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-10-16T09:14:15.790Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/undefined [none]
+[debug] [2022-10-16T09:14:15.795Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-10-16T09:14:15.795Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-10-16T09:14:16.065Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/undefined 401
+[debug] [2022-10-16T09:14:16.066Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/undefined {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCOUNT_STATE_INVALID","domain":"googleapis.com","metadata":{"method":"google.firebase.service.v1beta1.FirebaseProjectService.GetFirebaseProject","service":"firebase.googleapis.com"}}]}}
+[debug] [2022-10-16T09:14:16.066Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2022-10-16T09:14:16.181Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at module.exports (/Users/andyvo/.nvm/versions/node/v16.14.0/lib/node_modules/firebase-tools/lib/responseToError.js:47:12)
+    at RetryOperation._fn (/Users/andyvo/.nvm/versions/node/v16.14.0/lib/node_modules/firebase-tools/lib/apiv2.js:286:39)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project undefined. Please make sure the project exists and your account has permission to access it.

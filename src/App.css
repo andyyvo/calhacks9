@@ -282,6 +282,7 @@ p.bold {
 .screen {
   display: block;
   width: 100%;
+  overflow: hidden;
 }
 .screen.auto {
   height: auto;
@@ -347,6 +348,11 @@ p.bold {
   margin-top: 20px;
 }
 
+img.logo {
+  width: 100%;
+  height: auto;
+}
+
 h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 2.625rem;
@@ -397,14 +403,74 @@ p.bold {
   font-weight: 700;
 }
 
+.moods-container {
+  width: 25.5rem;
+  z-index: 1;
+}
+.moods-container.fear {
+  position: absolute;
+  left: -4rem;
+  top: -11.375rem;
+}
+.moods-container.anger {
+  position: absolute;
+  left: -15rem;
+  top: 12.8rem;
+}
+.moods-container.surprised {
+  position: absolute;
+  left: 13.75rem;
+  bottom: -13.5rem;
+}
+.moods-container.sad {
+  position: absolute;
+  right: 18rem;
+  top: -10rem;
+}
+.moods-container.hopeful {
+  position: absolute;
+  right: -16.25rem;
+  top: 6.5rem;
+}
+.moods-container.happy {
+  position: absolute;
+  right: -16.25rem;
+  bottom: -4.5rem;
+}
+
+img.moods {
+  width: 100%;
+}
+
 .button.data-icon {
   width: 5rem;
   height: 5rem;
+  z-index: 999;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }
 
 img.data-button-icon {
   width: 100%;
   height: 100%;
+}
+
+.get-started-content {
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.get-started-content .logo-container {
+  max-width: 25rem;
+  margin-bottom: 1rem;
+}
+.get-started-content h1.bold {
+  margin-bottom: 1rem;
 }
 
 * {
