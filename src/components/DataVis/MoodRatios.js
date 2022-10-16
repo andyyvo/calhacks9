@@ -181,35 +181,11 @@ export const MoodRatios = () => {
                                     )
                         }
                     );
-                    // .join(
-                    //     enter => enter.append("image"))
-                    //         .attr('id', d => d.emotion + '-bubble')
-                    //         .attr('percent', d => d.score)
-                    //         .attr("xlink:href", d => "img/face_" + d.emotion+ ".svg")
-                    //         // .attr("x", d => xScale(0.5))
-                    //         .attr("x", (d,i) => {
-                    //             if (i%2==0){
-                    //                 return xScale(0.4 + Math.random() * 0.1)
-                    //             }
-                    //             else{
-                    //                 return xScale(0.2 + Math.random() * -0.1)
-                    //             }
-                    //         })
-                    //         .attr("y", config.h)
-                    //         .attr("width", d => rScale(d.score))
-                    //         .attr("height", d => rScale(d.score))
-                    //     .call(enter => enter.transition(getTransitionElastic())
-                    //         .attr("y", d => yScale(d.emotion))
-                    //     );
-
             }
         },[data,svgRef.current])
 
-
-       
-
         return (
-            <div className='line-ex'>
+            <div className='mood-ratio-div' style={{"backgroundColor":"white"}}>
                 <svg ref={svgRef}></svg>
             </div>
         );
