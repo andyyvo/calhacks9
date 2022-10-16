@@ -2,8 +2,10 @@ import React from "react";
 import { Screen } from "../components/Screen/Screen";
 import { ScreenFrame } from "../components/Screen/ScreenFrame";
 import '../styles/pages/_GraphPage.scss';
-import MoodRatios from "../components/MoodRatios/MoodRatios"
+// import MoodRatios from "../components/MoodRatios/MoodRatios"
 import Map from "../components/Map/Map"
+import { MoodRatios } from "../components/DataVis/MoodRatios";
+import { MoodMap } from "../components/DataVis/MoodMap";
 
 
 export const GraphPage: React.FunctionComponent = () => {
@@ -25,6 +27,8 @@ export const GraphPage: React.FunctionComponent = () => {
 
           <div id="grid-item-bottom-right">
               <Map/>
+          </div>
+          <div>
           </div>
         </div>
       </Screen>
