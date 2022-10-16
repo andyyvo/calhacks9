@@ -1,0 +1,19 @@
+.navbar {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+
+  &-logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 5rem;
+  }
+
+  &-menu {
+    display: inline-block;
+  }
+}

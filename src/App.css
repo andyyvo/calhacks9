@@ -1,3 +1,36 @@
+.button {
+  cursor: pointer;
+  width: auto;
+  height: auto;
+}
+.button.padding-large {
+  padding: 1rem 2rem;
+}
+.button.padding-small {
+  padding: 0.5rem 1rem;
+}
+.button.padding-none {
+  padding: 0rem;
+}
+
+.navbar {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+}
+.navbar-logo {
+  display: inline-block;
+  vertical-align: top;
+  width: 5rem;
+}
+.navbar-menu {
+  display: inline-block;
+}
+
 .screenframe {
   display: block;
   width: 100%;

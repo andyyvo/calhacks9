@@ -1,0 +1,33 @@
+@use '../variables' as v;
+
+.button {
+  cursor: pointer;
+  width: auto;
+  height: auto;
+
+  // button types
+  &.primary {
+    
+  }
+
+  &.secondary {
+
+  }
+
+  &.link {
+
+  }
+  
+  // button paddings
+  &.padding-large {
+    padding: 1rem 2rem;
+  }
+
+  &.padding-small {
+    padding: 0.5rem 1rem;
+  }
+
+  &.padding-none {
+    padding: 0rem;
+  }
+}

@@ -10,9 +10,9 @@ export interface ButtonProps {
   /** accessible name for button */
   'aria-label'?: string;
   /** color of button background */
-  backgroundColor?: 'blue' | 'teal' | 'green' | 'cream' | 'offwhite' | 'white';
+  backgroundColor?: 'blue' | 'green' | 'yellow' | 'red' | 'purple' | 'gray' | 'black' | 'cream';
   /** renders content inside button */
-  children?: React.ReactNode;
+  children: React.ReactNode;
   /** class name of button */
   classname?: string;
   /** color of button text */
@@ -21,8 +21,12 @@ export interface ButtonProps {
   icon?: React.ReactNode;
   /** icon position */
   iconPosition?: 'left' | 'right';
+  /** onClick event */
+  onClick: () => void;
   /** padding size of button */
-  padding?: 'large' | 'small' | 'none';
+  padding: 'large' | 'small' | 'none';
+  /** toggle state */
+  toggle?: boolean;
   /** button variant */
   variant: 'primary' | 'secondary' | 'link';
 }
@@ -32,33 +36,31 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   backgroundColor = 'blue',
   children = null,
   classname = 'button',
-  color = '#FFF',
+  color = '#393A40',
   icon = null,
   iconPosition = 'left',
+  onClick = () => {},
   padding = 'none',
+  toggle,
   variant = ButtonVariant.primary,
   ...props
 }: ButtonProps) => {
-  const ButtonPadding = (padding: 'large' | 'small' | 'none') => {
-    if (padding === 'large') {
-      return '1rem 2rem';
-    } else if (padding === 'small') {
-      return '0.5rem 1rem';
-    } else {
-      return '0rem';
-    }
-  }
-
   const ButtonStyle = {
     color: color,
-    padding: ButtonPadding(padding),
   }
 
   return (
     <button
       {...props}
       style={ButtonStyle}
-      className={classname +' '+ variant +' background-' + backgroundColor}
+      onClick={onClick}
+      className={
+        classname
+        +' '+ variant
+        +' background-' + backgroundColor
+        +' padding-' + padding
+        + (toggle ? ' toggle-on' : ' toggle-off')
+      }
     >
       {children}
     </button>

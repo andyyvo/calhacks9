@@ -3,6 +3,8 @@
 // imports
 @use "./variables" as v;
 @import "./variables";
+@import "./components/Button";
+@import "./components/NavBar";
 @import "./components/Screen";
 
 * {
