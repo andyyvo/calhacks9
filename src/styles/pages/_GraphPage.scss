@@ -1,0 +1,31 @@
+#grid-container {
+    background-color: #F5EDE2;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 7fr;
+    grid-template-areas:"top top"
+                        "bottom-left bottom-right"
+}
+
+#grid-item-top {
+    grid-area: top;
+    padding: 20px 0px 0px 0px;
+    text-align: center;
+}
+
+#grid-item-bottom-left {
+    grid-area: bottom-left;
+    height: 100vh;
+    padding: 20px;
+}
+
+#grid-item-bottom-right {
+    grid-area: bottom-right;
+    height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.date {
+    margin-top: 20px;
+}
