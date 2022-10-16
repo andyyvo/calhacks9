@@ -42,6 +42,16 @@ export const MoodMap = () => {
         "Social Welfare": { x: 0, y: 0 }
     };
 
+
+const modifyData = (newData) => {
+    // console.log('modifying',newData);
+    newData.forEach(d=>{
+        d.score = Math.round(d.score + (Math.random() - 0.5) * 0.5 * 100) / 100;
+    })
+    // console.log('modified',newData);
+    return newData
+}
+
     // background map image
     const MapVis = () => {
         // import data
@@ -93,8 +103,6 @@ export const MoodMap = () => {
             },
         ];
 
-        // let expanded_data = raw_data.forEach((d)=>{console.log('raw_data',d)});
-        // let expanded_data = raw_data.forEach(d => d.scores.forEach(r => console.log('school',d.school,'row',r)));
         let expanded_data = [];
         raw_data.forEach(
             d => d.scores.forEach(
@@ -104,13 +112,17 @@ export const MoodMap = () => {
                 }
             )
         );
-        console.log('expdata', expanded_data);
+    
+        // set data using useState
         const [data, setData] = useState(expanded_data);
+
+        // update Data every 5000 seconds
+        d3.interval(() => setData(modifyData(expanded_data)),5000)
 
         // usRef for svg
         const svgRef = useRef(null); // reference
-        // useEffect to update DOM each time data changes
 
+        // useEffect to update DOM each time data changes
         useEffect(() => {
             // console.log('DATA CHANGED! bubble', data);
             // create svg
