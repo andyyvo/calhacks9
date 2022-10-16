@@ -1,14 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as d3 from 'd3';
-import Map from '../Map/Map';
-// import '../../styles/components/_Map.scss'; 
+import Map from '../Map/Map'; 
 
 const config = {
     anim_speed: 2000,
-    // w: window.innerWidth * 0.7,
     w: 952,
     h: 647,
-    // h: window.innerHeight * 0.7
 };
 
 //transition factories
@@ -43,13 +40,8 @@ export const MoodMap = () => {
     };
 
 
-    const modifyData = (newData) => {
-        // console.log('modifying',newData);
-        newData.forEach(d => {
-            d.score = Math.max(Math.round(d.score + (Math.random() - 0.5) * 0.1 * 100) / 100, 0);
-        })
-        console.log('modified',newData);
-        return newData
+    function randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
     // background map image
@@ -121,12 +113,6 @@ export const MoodMap = () => {
 
         // useEffect to update DOM each time data changes
         useEffect(() => {
-            // console.log('DATA CHANGED! bubble', data);
-
-            // update Data every 5000 seconds
-            // const weRollInterval = d3.interval(() => setData(modifyData(data)), 5000);
-            const weRollInterval = setInterval(() => setData(modifyData(data)), 5000);
-
             // create svg
             const svg = d3.select(svgRef.current)
                 .attr('width', config.w)
@@ -134,6 +120,25 @@ export const MoodMap = () => {
                 .style("background", "url(https://drive.google.com/uc?export=view&id=1j5aVmMLt7iNCUYs1BAYU8B_KmSBACLNT) no-repeat")
                 .style("background-size", "contain")
                 ;
+        
+            const modifyData = (data) => {
+                let moodImages = d3.selectAll('.school-bubble');
+                // console.log('modifying',newData);
+                data.forEach((d, i) => {
+                    // d.score = d.score + randomIntFromInterval(-100, 100)/100;
+                    d.score = randomIntFromInterval(5, 70)/100;
+                })
+                moodImages.merge(moodImages)
+                    .transition(getTransitionCubic())
+                    .attr("width", d => { console.log('updating'); return rScale(d.score) })
+                    .attr("height", d => rScale(d.score));
+                let newData = data;
+                return newData
+            }
+            const weRollInterval = setInterval(() => {
+                setData(modifyData(data));
+            }
+                , 4000);
 
             let xScale = d3.scaleLinear()
                 .domain([0, 1])
@@ -221,9 +226,15 @@ export const MoodMap = () => {
                             //     .attr("width", d => rScale(d.score))
                             //     .attr("height", d => rScale(d.score))
                             //     .style('opacity', .7);
-                        })
+                        },
+                            update => update
+                                .transition(getTransitionCubic())
+                                .attr("width", d => { console.log('update'); return rScale(d.score) })
+                                .attr("height", d => rScale(d.score)))
                 );
 
+            // clear interval after effect done
+            // return () => clearInterval(weRollInterval);
         }, [data, svgRef.current])
 
         return (
@@ -236,8 +247,6 @@ export const MoodMap = () => {
     return (
         <>
             <MapVis />
-            {/* <Map /> */}
-            {/* <img src={bgImage} style={{width:"80%", position:"absolute", top:"150px", left:"200px"}}/> */}
         </>
     );
 };
