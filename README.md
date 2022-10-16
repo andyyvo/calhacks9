@@ -18,21 +18,12 @@ Setting up Moodz is pretty quick and easy!
 
 `npm install`
 
-2. Set up and start the Python environment (assuming you have Python 3+ installed). Fortunately for you, we've set up a proxy and script for our backend so that you can start the environment without diving into our files!
-
-`npm run start-backend`
-
-OR if you want to do it manually
-- `source env/bin/activate` (mac/unix) and `.\env\Scripts\activate` (windows)
-- `flask run`
-
-3. Start the project!
+2. Start the project!
 
 `npm start`
 
 ## How was Moodz built and how does Moodz really work?
-While our platform looks straightforward, designing it and developing it was a whole adventure. On the design side, our fun moody graphics were hand-drawn. The component system and styles were all written from scratch with the exception of Material UI's select dropdown menu. The data visualizations and the backend gets a little interesting. We trained a model of words using **Natural Language Processing** to obtain a numerical sentiment to measure the severity of the words in each category. By randomizing sets of words in each user session (tracked by a randomized cryptographic hash), a user submission of their mood will go into our Firebase database. From here, our Flask server aggregates the moods by department and as a whole campus, gets run on an NLP model to obtain a new numerical sentiment, and then sends that back to the client-side via Flask.
+While our platform looks straightforward, designing it and developing it was a whole adventure. On the design side, our fun moody graphics were hand-drawn. The component system and styles were all written from scratch with the exception of Material UI's select dropdown menu. The data visualizations and the backend gets a little interesting. We trained a model of words using **Natural Language Processing** to obtain a numerical sentiment to measure the severity of the words in each category. By randomizing sets of words in each user session (tracked by a randomized cryptographic hash), a user submission of their mood will go into our Firebase database. As a result of unprecedented and unexpected challenges along the way in regards to Firebase async issues as well as Flask environments, a significant portion of our project was substituted by "dummy data" to mock the representation of our user inputs. Fortunately, we were able to obtain the user moods but async/await issues pushed us to resort for mock data.
 
-## Our sources and help!
-[Setting up Flask with React](https://dev.to/nagatodev/how-to-connect-flask-to-reactjs-1k8i)
-[Appending Firebase Realtime DB](https://www.techotopia.com/index.php/Working_with_Firebase_Realtime_Database_Lists)
+## What challenges did Moodz face in 24 hours?
+We ran into a quite a number of issues with the project! But that doesn't mean we couldn't get it to work. The premise of Moodz lies on three main technical components: user input, database transactions, and data visualization. We were able to meet two of those metrics (user input and data visualization)! However, what set us back on database transactions was the result of unexpected async/await issues in obtaining Firebase Realtime DB data. While users were able to write into the DB, reading the DB was much more difficult. For some reason, our Flask environment ran into issues as well with hosting and so we resulted to obtaining our data on the client side. While we were able to obtain and map our data, the time was coming to an end.
