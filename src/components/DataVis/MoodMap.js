@@ -23,24 +23,6 @@ function getTransitionElastic(amp = 0.5, period = 0.4) {
 }
 
 export const MoodMap = () => {
-    // school coords
-    const schools = {
-        business: "The Haas School of Business",
-        chemistry: "The College of Chemistry",
-        computing: "The Division of Computing, Data Science & Society",
-        education: "The Graduate School of Education",
-        engineering: "The College of Engineering",
-        environment: "The College of Environmental Design",
-        information: "The School of Information",
-        journalism: "The Graduate School of Journalism",
-        law: "The School of Law",
-        ls: "The College of Letters & Science",
-        natural: "The Rausser College of Natural Resources",
-        optometry: "The School of Optometry",
-        health: "The School of Public Health ",
-        policy: "The Richard and Rhoda Goldman School of Public Policy",
-        welfare: "The School of Social Welfare"
-    }
 
     const school_coords = {
         "Business": { x: 0.5, y: .75 },
@@ -61,8 +43,6 @@ export const MoodMap = () => {
     };
 
     // background map image
-    const bgImage = "img/placeholder.png";
-
     const MapVis = () => {
         // import data
         const raw_data = [
@@ -138,7 +118,8 @@ export const MoodMap = () => {
                 .attr('width', config.w)
                 .attr('height', config.h)
                 .style("background", "url(https://drive.google.com/uc?export=view&id=1j5aVmMLt7iNCUYs1BAYU8B_KmSBACLNT) no-repeat")
-                .style("background-size", "contain");
+                .style("background-size", "contain")
+                ;
 
             let xScale = d3.scaleLinear()
                 .domain([0, 1])
@@ -198,39 +179,35 @@ export const MoodMap = () => {
                             .attr("width", d => rScale(d.score))
                             .attr("height", d => rScale(d.score))
                         )
-                        .on('mouseover', function (event, d) {
-                            // d3.select(this)
-                            //     .transition()
-                            //     .duration(50)
-                            //     .style('opacity', 1).moveToFront();
+                        .on('mouseenter', function (event, d) {
+                            d3.select(this)
+                                .transition()
+                                .duration(50)
+                                // .attr("width", d => rScale(d.score) * 1.2)
+                                // .attr("height", d => rScale(d.score) * 1.2)
+                                .style('opacity', 1);
 
                             tooltip_a.transition()
                                 .duration(200)
                                 .style("opacity", .8);
-                            tooltip_content = d.school + ": " + d.emotion + ":" + d.score;
+                            tooltip_content = "<b>" + d.school + " (" + d.emotion + "): </b>" + d.score;
                             tooltip_a.html(tooltip_content)
                                 .style("left", (event.pageX + 10) + "px")
                                 .style("top", (event.pageY) + "px");
                         }
                         )
-                        .on('mouseout', (event, d) => {
-                            // d3.select(this)
-                            //     .duration('50')
-                            //     .style('opacity', .7);
+                        .on('mouseleave', (event, d) => {
                             tooltip_a.transition()
                                 .duration(500)
                                 .style("opacity", 0);
+
+                            // d3.select(this)
+                            //     .transition()
+                            //     .duration(50)
+                            //     .attr("width", d => rScale(d.score))
+                            //     .attr("height", d => rScale(d.score))
+                            //     .style('opacity', .7);
                         })
-                        // .on('click', function (event, d) {
-                        //     tooltip_a.transition()
-                        //         .duration(200)
-                        //         .style("opacity", .8);
-                        //     tooltip_content = d.school + ": " + d.emotion + ":" + d.score;
-                        //     d3.select(this).moveToFront();
-                        //     tooltip_a.html(tooltip_content)
-                        //         .style("left", (event.pageX + 10) + "px")
-                        //         .style("top", (event.pageY) + "px");
-                        // })
                 );
 
         }, [data, svgRef.current])
