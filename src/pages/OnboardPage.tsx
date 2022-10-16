@@ -11,7 +11,7 @@ export const OnboardPage: React.FunctionComponent = () => {
 
   return (
     <ScreenFrame>
-      <Screen type="full" padding="2rem">
+      <Screen classname="screen onboard" type="full" padding="2rem">
         <div className="onboardpage-graphics">
           <div className="moods-container fear">
             <img src="/img/blue_fear.svg" alt="fear" className="moods fear" />

@@ -9,7 +9,6 @@
 .screen {
   display: block;
   width: 100%;
-  overflow: hidden;
 
   // types of screens
   &.auto {
@@ -18,6 +17,8 @@
 
   &.full {
     height: 100vh;
+    overflow: hidden;
+    overflow-x: hidden;
   }
 
   // color of screens

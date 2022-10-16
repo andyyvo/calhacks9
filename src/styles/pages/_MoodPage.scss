@@ -1,0 +1,38 @@
+.moodpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mood-select {
+  margin-bottom: 2rem;
+}
+
+.mood-select_options {
+  display: flex;
+
+  .mood-select_option {
+    margin: 0.5rem;
+    max-width: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .button {
+      z-index: 999;
+    }
+  }
+}
+
+img.mood-image {
+  width: 10rem;
+}
+
+.berkeley-dept {
+  margin-bottom: 2rem;
+}
+
+.berkeley-dept_dropdown {
+  margin-top: 1rem;
+}

@@ -192,6 +192,15 @@ p.bold {
 .button.primary.background-white {
   background-color: #FFF;
 }
+.button.link {
+  background-color: transparent;
+}
+.button.link.toggle-on {
+  background-color: #FFF;
+}
+.button.link:active, .button.link:focus {
+  background-color: #FFF;
+}
 .button.padding-large {
   padding: 1rem 2rem;
 }
@@ -203,6 +212,9 @@ p.bold {
 }
 .button.padding-none {
   padding: 0rem;
+}
+.button:disabled {
+  background-color: #D9D9D9;
 }
 
 .navbar {
@@ -282,13 +294,14 @@ p.bold {
 .screen {
   display: block;
   width: 100%;
-  overflow: hidden;
 }
 .screen.auto {
   height: auto;
 }
 .screen.full {
   height: 100vh;
+  overflow: hidden;
+  overflow-x: hidden;
 }
 .screen.backgroundcolor-cream {
   background-color: #F5EDE2;
@@ -353,6 +366,43 @@ img.logo {
   height: auto;
 }
 
+.moodpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mood-select {
+  margin-bottom: 2rem;
+}
+
+.mood-select_options {
+  display: flex;
+}
+.mood-select_options .mood-select_option {
+  margin: 0.5rem;
+  max-width: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mood-select_options .mood-select_option .button {
+  z-index: 999;
+}
+
+img.mood-image {
+  width: 10rem;
+}
+
+.berkeley-dept {
+  margin-bottom: 2rem;
+}
+
+.berkeley-dept_dropdown {
+  margin-top: 1rem;
+}
+
 h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 2.625rem;
@@ -401,6 +451,11 @@ p {
 
 p.bold {
   font-weight: 700;
+}
+
+.onboard {
+  overflow: hidden;
+  scroll-behavior: none;
 }
 
 .moods-container {

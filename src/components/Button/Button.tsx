@@ -21,6 +21,8 @@ export interface ButtonProps {
   icon?: React.ReactNode;
   /** icon position */
   iconPosition?: 'left' | 'right';
+  /** disabled? */
+  isDisabled?: boolean;
   /** onClick event */
   onClick?: () => void;
   /** padding size of button */
@@ -39,6 +41,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   color = '#393A40',
   icon = null,
   iconPosition = 'left',
+  isDisabled = false,
   onClick = () => {},
   padding = 'none',
   toggle,
@@ -54,6 +57,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
       {...props}
       style={ButtonStyle}
       onClick={onClick}
+      disabled={isDisabled}
       className={
         classname
         +' '+ variant

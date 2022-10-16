@@ -55,7 +55,14 @@
   }
 
   &.link {
+    background-color: transparent;
+    &.toggle-on {
+      background-color: v.$white;
+    }
+  }
 
+  &.link:active, &.link:focus {
+    background-color: v.$white;
   }
   
   // button paddings
@@ -73,5 +80,9 @@
 
   &.padding-none {
     padding: 0rem;
+  }
+
+  &:disabled {
+    background-color: v.$gray;
   }
 }

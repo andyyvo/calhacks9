@@ -5,17 +5,24 @@ import { Button } from "../components/Button/Button";
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { generateUUID } from "../config/generateRandomUUID";
 import { writeMoodData } from "../config/onboardSubmit";
+import { Link } from "react-router-dom";
 
 /** get user berkeley dept/school and their mood */
 
 export const MoodPage: React.FunctionComponent = () => {
+  // mood state hooks
   const [mood1, setMood1] = React.useState(false);
   const [mood2, setMood2] = React.useState(false);
   const [mood3, setMood3] = React.useState(false);
   const [mood4, setMood4] = React.useState(false);
   const [mood5, setMood5] = React.useState(false);
   const [mood6, setMood6] = React.useState(false);
+  // dept state hook
   const [dept, setDept] = React.useState('');
+  // did a mood get selected
+  const [isMood, setIsMood] = React.useState(false);
+  // did a dept get selected
+  const [isDept, setIsDept] = React.useState(false);
 
   /** get session cookie uuid */
   const cookie = generateUUID();
@@ -38,6 +45,7 @@ export const MoodPage: React.FunctionComponent = () => {
     setMood5(false);
     setMood6(false);
     console.log(mood1, mood2, mood3, mood4, mood5, mood6);
+    setIsMood(true);
   }
 
   const handleOnClick2 = () => {
@@ -48,6 +56,7 @@ export const MoodPage: React.FunctionComponent = () => {
     setMood5(false);
     setMood6(false);
     console.log(mood1, mood2, mood3, mood4, mood5, mood6);
+    setIsMood(true);
   }
 
   const handleOnClick3 = () => {
@@ -58,6 +67,7 @@ export const MoodPage: React.FunctionComponent = () => {
     setMood5(false);
     setMood6(false);
     console.log(mood1, mood2, mood3, mood4, mood5, mood6);
+    setIsMood(true);
   }
 
   const handleOnClick4 = () => {
@@ -68,6 +78,7 @@ export const MoodPage: React.FunctionComponent = () => {
     setMood5(false);
     setMood6(false);
     console.log(mood1, mood2, mood3, mood4, mood5, mood6);
+    setIsMood(true);
   }
 
   const handleOnClick5 = () => {
@@ -78,6 +89,7 @@ export const MoodPage: React.FunctionComponent = () => {
     setMood5(true);
     setMood6(false);
     console.log(mood1, mood2, mood3, mood4, mood5, mood6);
+    setIsMood(true);
   }
 
   const handleOnClick6 = () => {
@@ -88,10 +100,12 @@ export const MoodPage: React.FunctionComponent = () => {
     setMood5(false);
     setMood6(true);
     console.log(mood1, mood2, mood3, mood4, mood5, mood6);
+    setIsMood(true);
   }
 
   const handleSelectChange = (event: SelectChangeEvent) => {
     setDept(event.target.value as string);
+    setIsDept(true);
   }
 
   const handleOnSubmit = () => {
@@ -110,22 +124,58 @@ export const MoodPage: React.FunctionComponent = () => {
     }
   }
 
+  const showSubmitBtn = (
+    (isDept && isMood) ? (
+      <Link to="/home">
+        <Button
+          backgroundColor="yellow"
+          onClick={handleOnSubmit}
+          padding="large"
+          variant="primary"
+          isDisabled={!(isDept && isMood)}
+        >
+          <h3 className="bold">SEND MOODZ</h3>
+        </Button>
+      </Link>
+    ) : (
+      <></>
+    )
+  );
+
   return (
     <ScreenFrame>
-      <Screen type="full" padding="2rem">
+      <Screen classname="screen moodpage" type="full" padding="2rem">
         <div className="mood-select">
-          <h1>SELECT A MOOD</h1>
+          <h1 className="bold">Alright, what's the vibe?</h1>
           <div className="mood-select_options">
-            <Button variant="primary" padding="large" toggle={mood1} onClick={handleOnClick1}>fear</Button>
-            <Button variant="secondary" padding="large" toggle={mood2} onClick={handleOnClick2}>anger</Button>
-            <Button variant="link" padding="large" toggle={mood3} onClick={handleOnClick3}>anticipation</Button>
-            <Button variant="primary" padding="large" toggle={mood4} onClick={handleOnClick4}>surprise</Button>
-            <Button variant="secondary" padding="large" toggle={mood5} onClick={handleOnClick5}>joy</Button>
-            <Button variant="link" padding="large" toggle={mood6} onClick={handleOnClick6}>sad</Button>
+            <div className="mood-select-option">
+              <img className="mood-image" src="/img/face_fear.svg" alt="fear mood"/>
+              <Button variant="link" padding="large" toggle={mood1} onClick={handleOnClick1}><h2 className="bold">{moods.m1}</h2></Button>
+            </div>
+            <div className="mood-select-option">
+              <img className="mood-image" src="/img/face_anger.svg" alt="anger mood"/>
+              <Button variant="link" padding="large" toggle={mood2} onClick={handleOnClick2}><h2 className="bold">{moods.m2}</h2></Button>
+            </div>
+            <div className="mood-select-option">
+              <img className="mood-image" src="/img/face_hopeful.svg" alt="anticipation mood"/>
+              <Button variant="link" padding="large" toggle={mood3} onClick={handleOnClick3}><h2 className="bold">{moods.m3}</h2></Button>
+            </div>
+            <div className="mood-select-option">
+              <img className="mood-image" src="/img/face_surprise.svg" alt="surprise mood"/>
+              <Button variant="link" padding="large" toggle={mood4} onClick={handleOnClick4}><h2 className="bold">{moods.m4}</h2></Button>
+            </div>
+            <div className="mood-select-option">
+              <img className="mood-image" src="/img/face_happy.svg" alt="joy mood"/>
+              <Button variant="link" padding="large" toggle={mood5} onClick={handleOnClick5}><h2 className="bold">{moods.m5}</h2></Button>
+            </div>
+            <div className="mood-select-option">
+              <img className="mood-image" src="/img/face_sad.svg" alt="sad mood"/>
+              <Button variant="link" padding="large" toggle={mood6} onClick={handleOnClick6}><h2 className="bold">{moods.m6}</h2></Button>
+            </div>
           </div>
         </div>
         <div className="berkeley-dept">
-          <h2>CHOOSE A SCHOOL</h2>
+          <h2 className="bold">Which department are you in?</h2>
           <div className="berkeley-dept_dropdown">
             <FormControl fullWidth>
               <InputLabel id="berkeley-dept-select-label">School/College</InputLabel>
@@ -135,6 +185,7 @@ export const MoodPage: React.FunctionComponent = () => {
                 value={dept}
                 label="School/College"
                 onChange={handleSelectChange}
+                variant="filled"
               >
                 <MenuItem value={"Business"}>Business</MenuItem>
                 <MenuItem value={"Chemistry"}>Chemistry</MenuItem>
@@ -156,13 +207,7 @@ export const MoodPage: React.FunctionComponent = () => {
           </div>
         </div>
         <div className="submit-onboard">
-          <Button
-            onClick={handleOnSubmit}
-            padding="large"
-            variant="primary"
-          >
-            SUBMIT
-          </Button>
+          {showSubmitBtn}
         </div>
       </Screen>
     </ScreenFrame>

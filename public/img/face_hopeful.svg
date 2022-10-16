@@ -1,0 +1,15 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_52_714)">
+<circle cx="498.952" cy="498.95" r="497.206" transform="rotate(75 498.952 498.95)" fill="#8DC99C"/>
+<path d="M595.143 244.21C595.143 299.13 552.334 343.651 499.527 343.651C446.719 343.651 403.91 299.13 403.91 244.21" stroke="#393A40" stroke-width="27.15" stroke-linecap="round"/>
+<path d="M629.56 158.156C629.56 177.166 611.58 192.578 589.401 192.578C567.222 192.578 549.242 177.166 549.242 158.156" stroke="#393A40" stroke-width="22.6" stroke-linecap="round"/>
+<ellipse rx="46.4162" ry="46.4162" transform="matrix(-1 0 0 1 404.431 164.412)" fill="white"/>
+<ellipse rx="19.5437" ry="19.5437" transform="matrix(-1 0 0 1 382.445 157.084)" fill="#393A40"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M82.6541 769.031C196.335 945.582 414.854 1036.88 628.565 979.615C893.387 908.656 1050.54 636.451 979.586 371.629C950.908 264.603 889.362 175.163 808.717 111.258C835.905 153.482 857.096 200.583 870.792 251.694C941.751 516.517 784.593 788.721 519.771 859.68C361.974 901.962 201.556 863.251 82.6541 769.031Z" fill="#010201" fill-opacity="0.05"/>
+</g>
+<defs>
+<clipPath id="clip0_52_714">
+<rect width="1000" height="1000" fill="white"/>
+</clipPath>
+</defs>
+</svg>
