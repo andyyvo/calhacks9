@@ -6,8 +6,8 @@ import Map from '../Map/Map';
 const config = {
     anim_speed: 2000,
     // w: window.innerWidth * 0.7,
-    w: 952 * 0.8,
-    h: 647 * 0.8,
+    w: 952,
+    h: 647,
     // h: window.innerHeight * 0.7
 };
 
@@ -43,14 +43,14 @@ export const MoodMap = () => {
     };
 
 
-const modifyData = (newData) => {
-    // console.log('modifying',newData);
-    newData.forEach(d=>{
-        d.score = Math.round(d.score + (Math.random() - 0.5) * 0.5 * 100) / 100;
-    })
-    // console.log('modified',newData);
-    return newData
-}
+    const modifyData = (newData) => {
+        // console.log('modifying',newData);
+        newData.forEach(d => {
+            d.score = Math.max(Math.round(d.score + (Math.random() - 0.5) * 0.1 * 100) / 100, 0);
+        })
+        console.log('modified',newData);
+        return newData
+    }
 
     // background map image
     const MapVis = () => {
@@ -112,12 +112,9 @@ const modifyData = (newData) => {
                 }
             )
         );
-    
+
         // set data using useState
         const [data, setData] = useState(expanded_data);
-
-        // update Data every 5000 seconds
-        d3.interval(() => setData(modifyData(expanded_data)),5000)
 
         // usRef for svg
         const svgRef = useRef(null); // reference
@@ -125,6 +122,11 @@ const modifyData = (newData) => {
         // useEffect to update DOM each time data changes
         useEffect(() => {
             // console.log('DATA CHANGED! bubble', data);
+
+            // update Data every 5000 seconds
+            // const weRollInterval = d3.interval(() => setData(modifyData(data)), 5000);
+            const weRollInterval = setInterval(() => setData(modifyData(data)), 5000);
+
             // create svg
             const svg = d3.select(svgRef.current)
                 .attr('width', config.w)
