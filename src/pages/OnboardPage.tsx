@@ -4,6 +4,8 @@ import { Screen } from "../components/Screen/Screen";
 import { Button } from "../components/Button/Button";
 import { NavBar } from "../components/NavBar/NavBar";
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { generateUUID } from "../config/generateRandomUUID";
+import { writeMoodData } from "../config/onboardSubmit";
 
 /** get user berkeley dept/school and their mood */
 
@@ -15,6 +17,19 @@ export const OnboardPage: React.FunctionComponent = () => {
   const [mood5, setMood5] = React.useState(false);
   const [mood6, setMood6] = React.useState(false);
   const [dept, setDept] = React.useState('');
+
+  /** get session cookie uuid */
+  const cookie = generateUUID();
+
+  /** get 6 random moods: fear, anger, anticipation, surprise, joy, sad */
+  const moods = {
+    m1: "fear",
+    m2: "anger",
+    m3: "anticipation",
+    m4: "surprise",
+    m5: "joy",
+    m6: "sad"
+  }
 
   const handleOnClick1 = () => {
     setMood1(true);
@@ -80,6 +95,22 @@ export const OnboardPage: React.FunctionComponent = () => {
     setDept(event.target.value as string);
   }
 
+  const handleOnSubmit = () => {
+    if (mood1) {
+      writeMoodData(cookie, dept, moods.m1);
+    } else if (mood2) {
+      writeMoodData(cookie, dept, moods.m2);
+    } else if (mood3) {
+      writeMoodData(cookie, dept, moods.m3);
+    } else if (mood4) {
+      writeMoodData(cookie, dept, moods.m4);
+    } else if (mood5) {
+      writeMoodData(cookie, dept, moods.m5);
+    } else if (mood6) {
+      writeMoodData(cookie, dept, moods.m6);
+    }
+  }
+
   return (
     <ScreenFrame>
       <NavBar />
@@ -128,7 +159,7 @@ export const OnboardPage: React.FunctionComponent = () => {
         </div>
         <div className="submit-onboard">
           <Button
-            onClick={() => {}}
+            onClick={handleOnSubmit}
             padding="large"
             variant="primary"
           >
