@@ -6,6 +6,7 @@ import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@m
 import { generateUUID } from "../config/generateRandomUUID";
 import { writeMoodData } from "../config/onboardSubmit";
 import { Link } from "react-router-dom";
+import { moodGenerator } from "../config/generateMoods";
 
 /** get user berkeley dept/school and their mood */
 
@@ -28,13 +29,14 @@ export const MoodPage: React.FunctionComponent = () => {
   const cookie = generateUUID();
 
   /** get 6 random moods: fear, anger, anticipation, surprise, joy, sad */
+  const moodsList: string[] = moodGenerator();
   const moods = {
-    m1: "fear",
-    m2: "anger",
-    m3: "anticipation",
-    m4: "surprise",
-    m5: "joy",
-    m6: "sad"
+    m1: moodsList[0],
+    m2: moodsList[1],
+    m3: moodsList[2],
+    m4: moodsList[3],
+    m5: moodsList[4],
+    m6: moodsList[5]
   }
 
   const handleOnClick1 = () => {
