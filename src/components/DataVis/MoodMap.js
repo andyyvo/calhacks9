@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 import Map from '../Map/Map';
+// import '../../styles/components/_Map.scss'; 
 
 const config = {
     anim_speed: 2000,
@@ -50,11 +51,11 @@ export const MoodMap = () => {
         "Environmental Design": { x: 0, y: 0 },
         "Information": { x: .51, y: .53 },
         "Journalism": { x: .45, y: .2 },
-        "Law": { x: 0, y: 0 },
+        "Law": { x: .78, y: .68 },
         "Letters & Science": { x: 0, y: 0 },
         "Natural Resources": { x: 0, y: 0 },
-        "Optometry": { x: 0, y: 0 },
-        "Public Health": { x: 0, y: 0 },
+        "Optometry": { x: .7, y: .52 },
+        "Public Health": { x: .05, y: .33 },
         "Public Policy": { x: 0, y: 0 },
         "Social Welfare": { x: 0, y: 0 }
     };
@@ -67,12 +68,12 @@ export const MoodMap = () => {
         const raw_data = [
             {
                 school: "Information", scores:
-                    [{ emotion: 'fear', score: 0.2 },
+                    [{ emotion: 'fear', score: 0 },
                     { emotion: 'anger', score: 0.1 },
                     { emotion: 'hopeful', score: 0.1 },
-                    { emotion: 'surprise', score: 0.13 },
-                    { emotion: 'happy', score: 0.17 },
-                    { emotion: 'sad', score: 0.3 }]
+                    { emotion: 'surprise', score: 0.1 },
+                    { emotion: 'happy', score: 0.65 },
+                    { emotion: 'sad', score: 0.05 }]
             },
             {
                 school: "Journalism", scores:
@@ -82,7 +83,34 @@ export const MoodMap = () => {
                     { emotion: 'surprise', score: 0.1 },
                     { emotion: 'happy', score: 0.15 },
                     { emotion: 'sad', score: 0.25 }]
-            }
+            },
+            {
+                school: "Law", scores:
+                    [{ emotion: 'fear', score: 0.1 },
+                    { emotion: 'anger', score: 0.7 },
+                    { emotion: 'hopeful', score: 0.05 },
+                    { emotion: 'surprise', score: 0.05 },
+                    { emotion: 'happy', score: 0.05 },
+                    { emotion: 'sad', score: 0.05 }]
+            },
+            {
+                school: "Public Health", scores:
+                    [{ emotion: 'fear', score: 0.05 },
+                    { emotion: 'anger', score: 0.05 },
+                    { emotion: 'hopeful', score: 0.55 },
+                    { emotion: 'surprise', score: 0.05 },
+                    { emotion: 'happy', score: 0.1 },
+                    { emotion: 'sad', score: 0.2 }]
+            },
+            {
+                school: "Optometry", scores:
+                    [{ emotion: 'fear', score: 0.6 },
+                    { emotion: 'anger', score: 0.1 },
+                    { emotion: 'hopeful', score: 0 },
+                    { emotion: 'surprise', score: 0.05 },
+                    { emotion: 'happy', score: 0 },
+                    { emotion: 'sad', score: 0.25 }]
+            },
         ];
 
         // let expanded_data = raw_data.forEach((d)=>{console.log('raw_data',d)});
@@ -122,7 +150,29 @@ export const MoodMap = () => {
 
             let rScale = d3.scaleLinear()
                 .domain([0, Math.max(...data.map(d => d.score))])
-                .range([10, 60]);
+                .range([15, 40]);
+
+            // map tooltip
+            let tooltip_a = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0)
+                .style("position", "absolute")
+                .style("text-align", "left")
+                .style("padding", "2px")
+                .style("background-color", "#ddd")
+                .style("border", "solid")
+                .style("border-width", "2px")
+                .style("border-radius", "5px")
+            let tooltip_content = "";
+
+            // move to front
+            // move fn
+            d3.selection.prototype.moveToFront = function () {
+                return this.each(function () {
+                    this.parentNode.appendChild(this);
+                });
+            };
 
             // plot images for mood
             let map_spheres = svg.selectAll('image')
@@ -136,10 +186,10 @@ export const MoodMap = () => {
                         .attr("xlink:href", d => "img/face_" + d.emotion + ".svg")
 
                         .attr('x', d => {
-                            return xScale(school_coords[d.school]['x']);
+                            return xScale(school_coords[d.school]['x'] + (Math.random() - 0.5) * 0.1);
                         })
                         .attr('y', d => {
-                            return yScale(school_coords[d.school]['y']);
+                            return yScale(school_coords[d.school]['y'] + (Math.random() - 0.5) * 0.1);
                         })
                         .attr("width", 1)
                         .attr("height", 1)
@@ -149,19 +199,38 @@ export const MoodMap = () => {
                             .attr("height", d => rScale(d.score))
                         )
                         .on('mouseover', function (event, d) {
-                            d3.select(this)
-                                .transition()
-                                .duration('50')
-                                .attr("width", d => rScale(2 * d.score))
-                                .attr("height", d => rScale(2 * d.score))
-                                .style('opacity', 1);
+                            // d3.select(this)
+                            //     .transition()
+                            //     .duration(50)
+                            //     .style('opacity', 1).moveToFront();
+
+                            tooltip_a.transition()
+                                .duration(200)
+                                .style("opacity", .8);
+                            tooltip_content = d.school + ": " + d.emotion + ":" + d.score;
+                            tooltip_a.html(tooltip_content)
+                                .style("left", (event.pageX + 10) + "px")
+                                .style("top", (event.pageY) + "px");
                         }
                         )
-                        .on('mouseout', (e) => {
-                            e.transition()
-                            .duration('50')
-                            .style('opacity', .7);
+                        .on('mouseout', (event, d) => {
+                            // d3.select(this)
+                            //     .duration('50')
+                            //     .style('opacity', .7);
+                            tooltip_a.transition()
+                                .duration(500)
+                                .style("opacity", 0);
                         })
+                        // .on('click', function (event, d) {
+                        //     tooltip_a.transition()
+                        //         .duration(200)
+                        //         .style("opacity", .8);
+                        //     tooltip_content = d.school + ": " + d.emotion + ":" + d.score;
+                        //     d3.select(this).moveToFront();
+                        //     tooltip_a.html(tooltip_content)
+                        //         .style("left", (event.pageX + 10) + "px")
+                        //         .style("top", (event.pageY) + "px");
+                        // })
                 );
 
         }, [data, svgRef.current])
