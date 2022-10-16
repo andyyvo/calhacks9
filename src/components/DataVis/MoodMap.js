@@ -134,7 +134,7 @@ export const MoodMap = () => {
                         .attr('class', d => 'school-bubble')
                         .attr('percent', d => d.score)
                         .attr("xlink:href", d => "img/face_" + d.emotion + ".svg")
-                        
+
                         .attr('x', d => {
                             return xScale(school_coords[d.school]['x']);
                         })
@@ -148,17 +148,19 @@ export const MoodMap = () => {
                             .attr("width", d => rScale(d.score))
                             .attr("height", d => rScale(d.score))
                         )
-                        .on('mouseover', (e) => {
-                            e.transition()
+                        .on('mouseover', function (event, d) {
+                            d3.select(this)
+                                .transition()
                                 .duration('50')
                                 .attr("width", d => rScale(2 * d.score))
                                 .attr("height", d => rScale(2 * d.score))
                                 .style('opacity', 1);
                         }
                         )
-                        .on('mouseout', (e) => {e.transition()
-                                .duration('50')
-                                .style('opacity', .7);
+                        .on('mouseout', (e) => {
+                            e.transition()
+                            .duration('50')
+                            .style('opacity', .7);
                         })
                 );
 
