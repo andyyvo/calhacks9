@@ -1,8 +1,8 @@
 import React from "react";
-import { Button } from "../components/Button/Button";
 import { Logo } from "../components/Logo/Logo";
 import { Screen } from "../components/Screen/Screen";
 import { ScreenFrame } from "../components/Screen/ScreenFrame";
+import { Link } from "react-router-dom";
 
 /** error page */
 
@@ -31,20 +31,11 @@ export const ErrorPage: React.FunctionComponent = () => {
             <img src="/img/yellow_happy.svg" alt="happy" className="moods happy" />
           </div>
         </div>
-        <div className="data-button">
-          <Button
-            classname="button data-icon"
-            backgroundColor="white"
-            onClick={() => {}}
-            padding="even"
-            variant="primary"
-          >
-            <img className="data-button-icon" src="/icons/column-chart.svg" alt="bar-chart button" />
-          </Button>
-        </div>
         <div className="get-started-content">
           <div className="logo-container">
-            <Logo />
+            <Link to="/home">
+              <Logo />
+            </Link>
           </div>
           <h1 className="bold">Uh-oh!</h1>
           <h3>You're vibin' a little too hard!</h3>
