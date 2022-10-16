@@ -74,9 +74,6 @@ export const LineChartVis = () => {
 
 }
 
-export const MoodMapVis = () => {
-};
-
 
 export const AllViz = () => {
     // useState on data
@@ -89,8 +86,8 @@ export const AllViz = () => {
         {emotion:'sadness', score: 0.3}
     ]);
     
-    useEffect(()=>{console.log('global data changed')},
-    [data]);
+    // useEffect(()=>{console.log('global data changed')},
+    // [data]);
 
     const BarChartVis = ({data, setData}) => {
         // usRef for svg
@@ -156,7 +153,7 @@ export const AllViz = () => {
         // useEffect to update DOM each time data changes
         useEffect(() => {
             if (data && svgRef.current) {
-                console.log('DATA CHANGED! bubble', data);
+                // console.log('DATA CHANGED! bubble', data);
                 // create svg
                 const svg = d3.select(svgRef.current)
                     .attr('width',config.w)
