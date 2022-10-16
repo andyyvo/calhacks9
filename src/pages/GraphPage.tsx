@@ -5,6 +5,8 @@ import '../styles/pages/_GraphPage.scss';
 import { MoodMap} from "../components/DataVis/MoodMap"
 import { MoodRatios } from "../components/DataVis/MoodRatios";
 // import { MoodMap } from "../components/DataVis/MoodMap";
+import { Link } from "react-router-dom";
+import { Button } from "../components/Button/Button";
 
 
 export const GraphPage: React.FunctionComponent = () => {
@@ -14,6 +16,18 @@ export const GraphPage: React.FunctionComponent = () => {
   return (
     <ScreenFrame>
       <Screen type="auto">
+      <div className="data-button">
+          <Link to="/">
+            <Button
+              classname="button data-icon"
+              backgroundColor="white"
+              padding="even"
+              variant="primary"
+            >
+              <img className="data-button-icon" src="/icons/home.svg" alt="home button" />
+            </Button>
+          </Link>
+        </div>
         <div id="grid-container">
           <div id="grid-item-top">
             <h1>How is UC Berkeley doing today?</h1>
