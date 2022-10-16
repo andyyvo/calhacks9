@@ -7,27 +7,23 @@ import Map from "../components/Map/Map"
 
 
 export const GraphPage: React.FunctionComponent = () => {
-
-  // placeholder map image
-  const path = process.env.PUBLIC_URL;
-  const image = "img/placeholder.png";
-
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
   return (
     <ScreenFrame>
       <Screen type="auto">
-        <div id="grid-item-top">
-          <h1>How is UC Berkeley doing today?</h1>
-          <h3 className="date">{date}</h3> 
-        </div>
         <div id="grid-container">
-          <div id="grid-item-left">
+          <div id="grid-item-top">
+            <h1>How is UC Berkeley doing today?</h1>
+            <h3 className="date">{date}</h3> 
+          </div>
+
+          <div id="grid-item-bottom-left">
               <MoodRatios/>
           </div>
 
-          <div id="grid-item-right">
+          <div id="grid-item-bottom-right">
               <Map/>
           </div>
         </div>

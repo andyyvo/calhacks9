@@ -1,12 +1,10 @@
-import MapLegendBar from "../MapLegendBar/MapLegendBar";
-
 function Map() {
+    // placeholder map image
     const path = process.env.PUBLIC_URL;
     const image = "img/placeholder.png";
+
     return (
-        <div>
-            <img src={path + image} style={{width:"80%"}}/>
-        </div>
+        <img src={path + image} style={{width:"80%"}}/>
     );
 }
 

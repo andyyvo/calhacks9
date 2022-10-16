@@ -4,6 +4,9 @@
 @use "./variables" as v;
 @import "./variables";
 @import "./components/Screen";
+@import "./components/Map";
+@import "./components/MoodRatio";
+@import "./pages/GraphPage";
 
 * {
   box-sizing: border-box;

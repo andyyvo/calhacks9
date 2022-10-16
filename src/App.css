@@ -18,6 +18,60 @@
   background-color: #F5EDE2;
 }
 
+.ratio-container {
+  position: relative;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.face-img {
+  max-width: 35%;
+  max-height: 35%;
+  display: inline;
+}
+
+.ratio-label {
+  background-color: white;
+  border-radius: 30px;
+  width: 50%;
+  text-align: center;
+  right: 50px;
+  bottom: 8px;
+  position: absolute;
+  padding: 4px;
+}
+
+#grid-container {
+  background-color: #F5EDE2;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 7fr;
+  grid-template-areas: "top top" "bottom-left bottom-right";
+}
+
+#grid-item-top {
+  grid-area: top;
+  padding: 20px 0px 0px 0px;
+  text-align: center;
+}
+
+#grid-item-bottom-left {
+  grid-area: bottom-left;
+  height: 100vh;
+  padding: 20px;
+}
+
+#grid-item-bottom-right {
+  grid-area: bottom-right;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+.date {
+  margin-top: 20px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
