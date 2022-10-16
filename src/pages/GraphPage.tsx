@@ -9,7 +9,7 @@ import { MoodRatios } from "../components/DataVis/MoodRatios";
 
 export const GraphPage: React.FunctionComponent = () => {
   const current = new Date();
-  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  const date = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
 
   return (
     <ScreenFrame>
